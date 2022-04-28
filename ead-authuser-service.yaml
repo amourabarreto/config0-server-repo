@@ -47,7 +47,7 @@ authuser:
   refreshscope:
     name: Andre Moura Barreto
 management:
-  endpoint:
+  endpoints:
     web:
       exposure:
         include:
