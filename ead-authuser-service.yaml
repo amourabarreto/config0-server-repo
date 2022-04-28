@@ -45,7 +45,7 @@ ead:
 
 authuser:
   refreshscope:
-    name: andrebarreto
+    name: Andre Moura Barreto
 management:
   endpoint:
     web:
