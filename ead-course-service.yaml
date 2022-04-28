@@ -1,13 +1,13 @@
 server:
-  port: 8087
+  port: 8082
   servlet:
-    context-path: '/ead-authuser/'
+    context-path: '/ead-course/'
 
 spring:
   application:
-    name: ead-authuser-service
+    name: ead-course-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/ead-authuser-v2
+    url: jdbc:postgresql://localhost:5432/ead-course-v2
     username: postgres
     password: adm123
   jpa:
@@ -31,37 +31,20 @@ spring:
 logging:
   level:
     com.ead: TRACE
-    #root: DEBUG
     org.springframework.web: DEBUG
     org.hibernate: INFO
 
 ead:
   api:
     url:
-      course: 'http://ead-course-service/ead-course'
+      authuser: 'http://ead-authuser-service/ead-authuser'
   broker:
     exchange:
-      userEvent: ead.userevent
+      userEventExchange: ead.userevent
+    queue:
+      userEventQueue:
+        name: ead.userevent.ms.course
 
-resilience4j:
-  circuitbreaker:
-    instances:
-      circuitBrakerInstance:
-        sliding-window-size: 30
-        permitted-number-of-calls-in-half-open-state: 2
-        sliding-window-type: time_based
-        minimum-number-of-calls: 4
-        wait-duration-in-open-state: 30s
-        failure-rate-threshold: 80
-  retry:
-    instances:
-      retryInstances:
-        maxAttempts: 3
-        waitDuration: 5s
-
-authuser:
-  refreshscope:
-    name: Andre Barreto
 management:
   endpoints:
     web:
@@ -69,6 +52,7 @@ management:
         include:
           - refresh
           - health
+
 
 
 
