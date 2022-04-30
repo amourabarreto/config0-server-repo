@@ -34,16 +34,6 @@ logging:
     org.springframework.web: DEBUG
     org.hibernate: INFO
 
-ead:
-  api:
-    url:
-      authuser: 'http://ead-authuser-service/ead-authuser'
-  broker:
-    exchange:
-      userEventExchange: ead.userevent
-    queue:
-      userEventQueue:
-        name: ead.userevent.ms.course
 
 management:
   endpoints:
@@ -52,8 +42,19 @@ management:
         include:
           - refresh
           - health
-
-
+ead:
+  api:
+    url:
+      authuser: 'http://ead-authuser-service/ead-authuser'
+  broker:
+    exchange:
+      userEventExchange: ead.userevent
+      notificationCommandExchange: ead.notificationcommand;
+    queue:
+      userEventQueue:
+        name: ead.userevent.ms.course
+    key:
+      notificationCommandKey: ms.notification
 
 
 
