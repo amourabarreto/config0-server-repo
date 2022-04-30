@@ -21,9 +21,16 @@ spring:
           uri: lb://EAD-NOTIFICATION-SERVICE/
           predicates:
             - Path=/ead-notification/**
+ead:
+  serviceRegistry:
+    username: admin
+    password: admin
+
+
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${URL-EUREKA-SERVER}
+      defaultZone: 'http://${ead.serviceRegistry.username}:${ead.serviceRegistry.password}@${EUREKA-SERVER}:8761/eureka'
   instance:
-    prefer-ip-address: true
+    hostname: ead-gateway-service
+    #prefer-ip-address: true
