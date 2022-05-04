@@ -5,7 +5,7 @@ ead:
     password: admin
   auth:
     jwtSecret: QeThWmZq4t7w9z$C&F)J@NcRfUjXn2r5u8x/A%D*G-KaPdSgVkYp3s6v9y$B&E)H
-    jwtExpiration: 14400000
+    jwtExpirationMs: 14400000
 
 eureka:
   client:
