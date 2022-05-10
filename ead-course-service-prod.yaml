@@ -7,7 +7,7 @@ spring:
   application:
     name: ead-course-service
   datasource:
-     url: ${JDBC_DATABASE_URL}
+    url: ${JDBC_DATABASE_URL}
     username: ${JDBC_DATABASE_USERNAME}
     password: ${JDBC_DATABASE_PASSWORD}
   jpa:
@@ -25,6 +25,7 @@ spring:
 logging:
   level:
     com.ead: TRACE
+    root: INFO
     org.springframework.web: DEBUG
     org.hibernate: INFO
 
