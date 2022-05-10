@@ -1,0 +1,58 @@
+server:
+  port: ${port}
+  servlet:
+    context-path: '/ead-course/'
+
+spring:
+  application:
+    name: ead-course-service
+  datasource:
+     url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update #alteracoes em objetos serao refletidos no banco de dados
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.no-contextual-creation: true #bloqueia leitura de meta informacoes que podem gerar log de erro na inicializacao do hibernate
+    properties:
+      hibernate:
+        show_sql: true
+  rabbitmq:
+    addresses: amqps://dljpvpuf:krd992tzYuOUDUm43gevu0m3i5oueHky@toad.rmq.cloudamqp.com/dljpvpuf
+
+logging:
+  level:
+    com.ead: TRACE
+    org.springframework.web: DEBUG
+    org.hibernate: INFO
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - health
+ead:
+  api:
+    url:
+      authuser: 'http://ead-authuser-service/ead-authuser'
+  broker:
+    exchange:
+      userEventExchange: ead.userevent
+      notificationCommandExchange: ead.notificationcommand;
+    queue:
+      userEventQueue:
+        name: ead.userevent.ms.course
+    key:
+      notificationCommandKey: ms.notification
+
+
+
+
+
+
+
