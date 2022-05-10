@@ -20,7 +20,7 @@ spring:
       hibernate:
         show_sql: true
   rabbitmq:
-    addresses: ${CLOUDAMQP_URL}
+    addresses: amqps://dljpvpuf:krd992tzYuOUDUm43gevu0m3i5oueHky@toad.rmq.cloudamqp.com/dljpvpuf
 
 logging:
   level:
